@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>notepad</title>
+</head>
+<style type="text/css">
+ol,ul{
+display:block;
+list-style-type:none;
+margin:3px;
+}
+</style><body>
+<div>&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="id"&gt;<br>
+&lt;head&gt;<br>
+&lt;meta charset="UTF-8"&gt;<br>
+<br>
+&lt;!-- Agar aman di Android dan iPhone --&gt;<br>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;<br>
+<br>
+&lt;title&gt;Undangan Pernikahan&lt;/title&gt;<br>
+<br>
+&lt;style&gt;<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; RESET DASAR<br>
+========================= */<br>
+<br>
+*{<br>
+&nbsp;&nbsp;&nbsp; margin:0;<br>
+&nbsp;&nbsp;&nbsp; padding:0;<br>
+&nbsp;&nbsp;&nbsp; box-sizing:border-box;<br>
+}<br>
+<br>
+html{<br>
+&nbsp;&nbsp;&nbsp; scroll-behavior:smooth;<br>
+}<br>
+<br>
+body{<br>
+&nbsp;&nbsp;&nbsp; font-family:Arial, sans-serif;<br>
+&nbsp;&nbsp;&nbsp; overflow-x:hidden;<br>
+}<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; SECTION UTAMA<br>
+&nbsp;&nbsp; Setiap halaman full layar<br>
+========================= */<br>
+<br>
+section{<br>
+<br>
+&nbsp;&nbsp;&nbsp; width:100%;<br>
+&nbsp;&nbsp;&nbsp; height:100svh;<br>
+<br>
+&nbsp;&nbsp;&nbsp; display:flex;<br>
+&nbsp;&nbsp;&nbsp; justify-content:center;<br>
+&nbsp;&nbsp;&nbsp; align-items:center;<br>
+<br>
+&nbsp;&nbsp;&nbsp; text-align:center;<br>
+<br>
+&nbsp;&nbsp;&nbsp; background-size:cover;<br>
+&nbsp;&nbsp;&nbsp; background-position:center;<br>
+<br>
+&nbsp;&nbsp;&nbsp; position:relative;<br>
+}<br>
+<br>
+<br>
+/* Overlay agar tulisan terlihat */<br>
+<br>
+section::before{<br>
+<br>
+&nbsp;&nbsp;&nbsp; content:"";<br>
+<br>
+&nbsp;&nbsp;&nbsp; position:absolute;<br>
+<br>
+&nbsp;&nbsp;&nbsp; inset:0;<br>
+<br>
+&nbsp;&nbsp;&nbsp; background:rgba(0,0,0,0.35);<br>
+<br>
+}<br>
+<br>
+<br>
+.container{<br>
+<br>
+&nbsp;&nbsp;&nbsp; position:relative;<br>
+<br>
+&nbsp;&nbsp;&nbsp; z-index:2;<br>
+<br>
+&nbsp;&nbsp;&nbsp; padding:20px;<br>
+<br>
+}<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; NAVIGASI BAWAH<br>
+========================= */<br>
+<br>
+<br>
+.bottom-nav{<br>
+<br>
+&nbsp;&nbsp;&nbsp; position:fixed;<br>
+<br>
+&nbsp;&nbsp;&nbsp; bottom:20px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; left:50%;<br>
+<br>
+&nbsp;&nbsp;&nbsp; transform:translateX(-50%);<br>
+<br>
+&nbsp;&nbsp;&nbsp; z-index:100;<br>
+<br>
+&nbsp;&nbsp;&nbsp; display:flex;<br>
+<br>
+&nbsp;&nbsp;&nbsp; gap:15px;<br>
+<br>
+}<br>
+<br>
+<br>
+.bottom-nav button{<br>
+<br>
+&nbsp;&nbsp;&nbsp; width:45px;<br>
+&nbsp;&nbsp;&nbsp; height:45px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; border-radius:50%;<br>
+<br>
+&nbsp;&nbsp;&nbsp; border:none;<br>
+<br>
+&nbsp;&nbsp;&nbsp; background:white;<br>
+<br>
+}<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; BUTTON<br>
+========================= */<br>
+<br>
+button{<br>
+<br>
+&nbsp;&nbsp;&nbsp; cursor:pointer;<br>
+<br>
+}<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; COUNTDOWN<br>
+========================= */<br>
+<br>
+.countdown{<br>
+<br>
+&nbsp;&nbsp;&nbsp; display:flex;<br>
+<br>
+&nbsp;&nbsp;&nbsp; gap:10px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; justify-content:center;<br>
+<br>
+}<br>
+<br>
+<br>
+.time{<br>
+<br>
+&nbsp;&nbsp;&nbsp; background:white;<br>
+<br>
+&nbsp;&nbsp;&nbsp; padding:15px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; border-radius:10px;<br>
+<br>
+}<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; FORM RSVP<br>
+========================= */<br>
+<br>
+<br>
+form{<br>
+<br>
+&nbsp;&nbsp;&nbsp; display:flex;<br>
+<br>
+&nbsp;&nbsp;&nbsp; flex-direction:column;<br>
+<br>
+&nbsp;&nbsp;&nbsp; gap:10px;<br>
+<br>
+}<br>
+<br>
+<br>
+input,<br>
+textarea,<br>
+select{<br>
+<br>
+&nbsp;&nbsp;&nbsp; padding:12px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; border-radius:5px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; border:1px solid #ccc;<br>
+<br>
+}<br>
+<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; AUDIO BUTTON<br>
+========================= */<br>
+<br>
+<br>
+.music-btn{<br>
+<br>
+&nbsp;&nbsp;&nbsp; position:fixed;<br>
+<br>
+&nbsp;&nbsp;&nbsp; top:20px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; right:20px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; z-index:100;<br>
+<br>
+&nbsp;&nbsp;&nbsp; width:45px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; height:45px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; border-radius:50%;<br>
+<br>
+}<br>
+<br>
+<br>
+/* =========================<br>
+&nbsp;&nbsp; MOBILE<br>
+========================= */<br>
+<br>
+<br>
+@media(max-width:600px){<br>
+<br>
+&nbsp;&nbsp;&nbsp; .countdown{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gap:5px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; .time{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; padding:10px;<br>
+<br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+}<br>
+<br>
+<br>
+&lt;/style&gt;<br>
+<br>
+&lt;/head&gt;<br>
+<br>
+<br>
+&lt;body&gt;<br>
+<br>
+<br>
+&lt;!-- =========================<br>
+ AUDIO BACKGROUND<br>
+ Ganti lagu.mp3 dengan file sendiri<br>
+========================= --&gt;<br>
+<br>
+&lt;audio id="music" loop&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &lt;source src="audio/lagu.mp3" type="audio/mp3"&gt;<br>
+<br>
+&lt;/audio&gt;<br>
+<br>
+<br>
+&lt;button class="music-btn" onclick="toggleMusic()"&gt;<br>
+<br>
+&nbsp;&nbsp;&nbsp; &#9654;<br>
+<br>
+&lt;/button&gt;<br>
+<br>
+<br>
+<br>
+<br>
+&lt;!-- =========================<br>
+ 1. COVER<br>
+ Background:<br>
+ images/cover.jpg<br>
+========================= --&gt;<br>
+<br>
+&lt;section id="cover"<br>
+style="<br>
+background-image:url('images/cover.jpg');<br>
+"&gt;<br>
+<br>
+<br>
+&lt;div class="container"&gt;<br>
+<br>
+<br>
+&lt;h1&gt;Undangan Pernikahan&lt;/h1&gt;<br>
+<br>
+<br>
+&lt;h2 id="nama-pengantin"&gt;<br>
+<br>
+Dodik &amp; Adelia<br>
+<br>
+&lt;/h2&gt;<br>
+<br>
+<br>
+&lt;p&gt;<br>
+Kepada Yth.<br>
+&lt;/p&gt;<br>
+<br>
+<br>
+&lt;h3 id="guest"&gt;<br>
+<br>
+Tamu Undangan<br>
+<br>
+&lt;/h3&gt;<br>
+<br>
+<br>
+&lt;button onclick="bukaUndangan()"&gt;<br>
+<br>
+Buka Undangan<br>
+<br>
+&lt;/button&gt;<br>
+<br>
+<br>
+&lt;/div&gt;<br>
+<br>
+<br>
+&lt;/section&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;!-- =========================<br>
+ 2. NAMA PENGANTIN<br>
+ Background:<br>
+ images/pengantin.jpg<br>
+========================= --&gt;<br>
+<br>
+<br>
+&lt;section id="pengantin"<br>
+style="<br>
+background-image:url('images/pengantin.jpg');<br>
+"&gt;<br>
+<br>
+<br>
+&lt;div class="container"&gt;<br>
+<br>
+<br>
+&lt;h1&gt;Dodik&lt;/h1&gt;<br>
+<br>
+&lt;p&gt;<br>
+<br>
+Putra dari Bapak ... dan Ibu ...<br>
+<br>
+&lt;/p&gt;<br>
+<br>
+<br>
+&lt;h1&gt;&amp;&lt;/h1&gt;<br>
+<br>
+<br>
+&lt;h1&gt;Adelia&lt;/h1&gt;<br>
+<br>
+<br>
+&lt;p&gt;<br>
+<br>
+Putri dari Bapak ... dan Ibu ...<br>
+<br>
+&lt;/p&gt;<br>
+<br>
+<br>
+&lt;/div&gt;<br>
+<br>
+<br>
+&lt;/section&gt;<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+&lt;!-- =========================<br>
+ 3. INFORMASI ACARA<br>
+ Background:<br>
+ images/acara.jpg<br>
+========================= --&gt;<br>
+<br>
+<br>
+&lt;section id="acara"<br>
+style="<br>
+background-image:url('images/acara.jpg');<br>
+"&gt;<br>
+<br>
+<br>
+&lt;div class="container"&gt;<br>
+<br>
+<br>
+&lt;h1&gt;Informasi Acara&lt;/h1&gt;<br>
+<br>
+<br>
+&lt;p&gt;<br>
+<br>
+Tanggal:<br>
+&lt;br&gt;<br>
+<br>
+24 Oktober 2026<br>
+<br>
+&lt;/p&gt;<br>
+<br>
+<br>
+&lt;p&gt;<br>
+<br>
+Lokasi:<br>
+<br>
+&lt;br&gt;<br>
+<br>
+Gedung Pernikahan<br>
+<br>
+&lt;/p&gt;<br>
+<br>
+<br>
+&lt;/div&gt;<br>
+<br>
+<br>
+&lt;/section&gt;</div>
+</body>
+</html>
